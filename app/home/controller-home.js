@@ -2,17 +2,17 @@ export default function($scope, $state, db){
   let self = this;
 
   self.getTodos = ()=>{
-    db.getTodos().then(function(doc){
-      if(doc.status == 404){
+    db.getTodos().then((doc)=>{
+      self.todos =doc.todos;
+      $scope.$digest();
+    },(err) =>{
+      if(err.status == 404){
         db.updateTodo().then((newDoc)=>{},
         (err)=>{
           console.log("Error while creating the todos root");
         });
         self.todos = [];
-      }else{
-        self.todos =doc.todos;
       }
-      $scope.$digest();
     });
   }
 

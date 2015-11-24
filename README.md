@@ -6,6 +6,7 @@ This seed will contain a basic "todo" app using the tools mentioned above
 
 - Install all the dependencies required by Node: `npm install`
 - CouchDB should be installed, [go to this page](http://pouchdb.com/guides/setup-couchdb.html) to see how to set up CouchDB properly
+- Create a database called: 'todo' on CouchDB
 
 ## Useful Commands
 

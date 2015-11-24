@@ -22,14 +22,18 @@ export default function(){
       return localDB.get('todos');
     },
     updateTodo : (todo) =>{
-      return localDB.upsert('todos',(current)=>{
-        if(todo){
-          current.todos.push(todo)
-        }else{
-          current.todos = [];
-        }
-        return current;
-      })
+      if(todo){
+        return localDB.upsert('todos',(current)=>{
+          current.todos.push(todo);
+          return current;
+        })
+      }else{
+        console.log("Hello")
+        return localDB.put({
+          _id:'todos',
+          todos:[]
+        });
+      }
     }
   }
 }
