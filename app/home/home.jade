@@ -1,0 +1,9 @@
+ion-view(view-title="Home")
+  ion-content
+    .bar.bar-heder.item-input-inset
+      label.item-input-wrapper
+        input(type="text" placeholder="Todo" ng-model="home.todo")
+      button(ng-click="home.add()").button.button-clear Add
+    ion-list
+      ion-item(ng-repeat="todo in home.todos track by $index")
+        span(ng-bind="todo")

@@ -1,0 +1,5 @@
+ion-view(view-title="Details")
+  ion-content
+    ion-list
+      ion-item(ng-repeat="item in detail.items" ng-click="detail.moreDetail(item.more)")
+        span(ng-bind="item.name")
