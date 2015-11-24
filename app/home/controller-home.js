@@ -19,6 +19,7 @@ export default function($scope, $state, db){
   self.add = function(){
     db.updateTodo(self.todo).then((doc)=>{
       self.getTodos();
+      self.todo = '';
     });
   }
 

@@ -1,3 +1,14 @@
-# Basic seed using ionic along with Webpack
+# Basic seed using Ionic, Webpack, PouchDB and CouchDB
 
-This seed will contain the basic structure of a app using webpack as a module bundler
+This seed will contain a basic "todo" app using the tools mentioned above
+
+## Prerequisites
+
+- Install all the dependencies required by Node: `npm install`
+- CouchDB should be installed, [go to this page](http://pouchdb.com/guides/setup-couchdb.html) to see how to set up CouchDB properly
+
+## Useful Commands
+
+- Create the builds : `npm run build`
+- Run the app along with the watchers : `npm run start`
+- Run Unit Tests : `npm run test`
