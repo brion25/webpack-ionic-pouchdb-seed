@@ -9,7 +9,7 @@ export default angular.module('myApp', ['ionic','ui.router'])
             .state('index',{
                 url:'/',
                 template:Home.view(),
-                controller:['$scope','$state','Database',Home.ctrl],
+                controller:['$ionicListDelegate','$scope','$state','Database',Home.ctrl],
                 controllerAs:'home'
             })
     }]);

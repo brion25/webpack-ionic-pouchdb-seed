@@ -22,7 +22,7 @@ export default function($scope){
         getTodos : ()=>{
             return localDB.get('todos');
         },
-        updateTodo : (todo) =>{
+        addTodo : (todo) =>{
             if(todo){
                 return localDB.upsert('todos',(current)=>{
                     current.todos.push(todo);
@@ -35,6 +35,22 @@ export default function($scope){
                     todos:[]
                 });
             }
+        },
+        updateTodos : (todos, index) =>{
+            let promise = new Promise((resolve,reject)=>{
+                localDB.get('todos').then((doc)=>{
+                    localDB.put({
+                        _id:'todos',
+                        _rev:doc._rev,
+                        todos:todos
+                    }).then((res)=>{
+                        resolve(res.ok);
+                    },(err)=>{
+                        reject(err);
+                    })
+                })
+            })
+            return promise;
         }
     }
 }

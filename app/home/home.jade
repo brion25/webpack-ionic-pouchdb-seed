@@ -4,6 +4,9 @@ ion-view(view-title="Home")
             label.item-input-wrapper
                 input(type="text" placeholder="Todo" ng-model="home.todo")
             button(ng-click="home.add()").button.button-clear Add
-        ion-list
+        ion-list(can-swipe="home.swipe")
             ion-item(ng-repeat="todo in home.todos track by $index")
-                span(ng-bind="todo")
+                span(ng-bind="todo" ng-hide="$index === home.elementToEdit")
+                input(type="text" ng-show="$index === home.elementToEdit" ng-model="todo" ng-blur="home.updateTodo(todo, $index)" id="txt-opt-{{$index}}")
+                ion-option-button(ng-click="home.update($index)").button-positive Edit
+                ion-option-button(ng-click="home.delete($index)").button-assertive Delete
