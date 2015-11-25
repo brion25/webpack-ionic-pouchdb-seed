@@ -1,27 +1,31 @@
 export default function($scope, $state, db){
-  let self = this;
+    let self = this;
 
-  self.getTodos = ()=>{
-    db.getTodos().then((doc)=>{
-      self.todos =doc.todos;
-      $scope.$digest();
-    },(err) =>{
-      if(err.status == 404){
-        db.updateTodo().then((newDoc)=>{},
-        (err)=>{
-          console.log("Error while creating the todos root");
+    self.getTodos = ()=>{
+        db.getTodos().then((doc)=>{
+            self.todos =doc.todos;
+            $scope.$digest();
+        },(err) =>{
+            if(err.status == 404){
+                db.updateTodo().then((newDoc)=>{},
+                (err)=>{
+                    console.log("Error while creating the todos root");
+                });
+                self.todos = [];
+            }
         });
-        self.todos = [];
-      }
-    });
-  }
+    }
 
-  self.add = function(){
-    db.updateTodo(self.todo).then((doc)=>{
-      self.getTodos();
-      self.todo = '';
-    });
-  }
+    self.add = function(){
+        db.updateTodo(self.todo).then((doc)=>{
+            self.getTodos();
+            self.todo = '';
+        });
+    }
 
-  self.getTodos();
+    $scope.$on('remoteChanged',() => {
+        self.getTodos();
+    })
+
+    self.getTodos();
 }
