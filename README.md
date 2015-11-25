@@ -13,3 +13,7 @@ This seed will contain a basic "todo" app using the tools mentioned above
 - Create the builds : `npm run build`
 - Run the app along with the watchers : `npm run start`
 - Run Unit Tests : `npm run test`
+
+## Changes
+
+- **[2015-11-25]** - Options to 'edit' and 'delete' have been added, to see those options just swipe the 'todo'
